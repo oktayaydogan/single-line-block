@@ -1,0 +1,42 @@
+{
+  "name": "single-line-block",
+  "displayName": "Single Line Block",
+  "description": "Collapse selected block into a single line, replacing line breaks with spaces",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "single-line-block.collapse",
+        "title": "Collapse to Single Line"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "single-line-block.collapse",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorTextFocus && editorHasSelection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "single-line-block.collapse",
+          "when": "editorTextFocus && editorHasSelection",
+          "group": "1_modification"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.9.2"
+  }
+}
