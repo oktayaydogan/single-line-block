@@ -30,7 +30,7 @@ first line second line
 
 Select a line of text and run **Expand to Multiple Lines** from the editor context menu or the Command Palette.
 
-The command starts a new line after sentence-ending punctuation (`.`, `!`, and `?`). Long sentences are wrapped at word boundaries instead of splitting words. The default maximum line length is 40 characters and can be changed with the `singleLineBlock.expand.maxLineLength` setting.
+The command starts a new line after sentence-ending punctuation (`.`, `!`, and `?`). Within long sentences it prefers natural pauses such as commas, semicolons, and colons, then falls back to word boundaries without splitting words. The default maximum line length is 40 characters and can be changed with the `singleLineBlock.expand.maxLineLength` setting.
 
 Keyboard shortcut:
 

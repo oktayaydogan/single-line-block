@@ -1,22 +1,51 @@
 const vscode = require('vscode');
 
 function wrapText(text, maxLineLength) {
+    const words = text.split(' ');
     const lines = [];
-    let currentLine = '';
+    let start = 0;
 
-    for (const word of text.split(' ')) {
-        if (!currentLine) {
-            currentLine = word;
-        } else if (currentLine.length + word.length + 1 <= maxLineLength) {
-            currentLine += ` ${word}`;
-        } else {
-            lines.push(currentLine);
-            currentLine = word;
+    while (start < words.length) {
+        let end = start;
+        let lineLength = 0;
+        let naturalBreak = -1;
+
+        while (end < words.length) {
+            const nextLength = lineLength + words[end].length + (end > start ? 1 : 0);
+            if (lineLength && nextLength > maxLineLength) break;
+
+            lineLength = nextLength;
+            if (/[,:;]$/.test(words[end])) {
+                naturalBreak = end + 1;
+            }
+            end += 1;
         }
+
+        if (end === words.length) {
+            lines.push(words.slice(start, end).join(' '));
+            break;
+        }
+
+        const breakAt = naturalBreak > start && lineLength >= maxLineLength * 0.65
+            ? naturalBreak
+            : end > start ? end : start + 1;
+        lines.push(words.slice(start, breakAt).join(' '));
+        start = breakAt;
     }
 
-    if (currentLine) {
-        lines.push(currentLine);
+    if (lines.length > 1 && lines.at(-1).length < maxLineLength * 0.35) {
+        const lastLine = lines.pop();
+        let previousLine = lines.pop();
+        const wordsToMove = lastLine.split(' ');
+
+        while (wordsToMove.length > 0) {
+            const candidate = `${previousLine} ${wordsToMove[0]}`;
+            if (candidate.length > maxLineLength) break;
+            previousLine = candidate;
+            wordsToMove.shift();
+        }
+
+        lines.push(previousLine, wordsToMove.join(' '));
     }
 
     return lines;

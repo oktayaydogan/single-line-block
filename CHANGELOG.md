@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.4] - 2026-08-25
+
+### Changed
+
+- Expansion now prefers punctuation-based line breaks and avoids unnecessarily short trailing lines.
+
 ## [0.0.3] - 2026-08-25
 
 ### Updated
