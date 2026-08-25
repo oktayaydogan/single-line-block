@@ -2,7 +2,12 @@
   "name": "single-line-block",
   "displayName": "Single Line Block",
   "description": "Collapse selected block into a single line, replacing line breaks with spaces",
+  "publisher": "OktayAydoan",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oktayaydogan/single-line-block.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
