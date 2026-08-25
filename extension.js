@@ -27,7 +27,7 @@ function expandText(text, maxLineLength) {
     if (!normalizedText) return '';
 
     return normalizedText
-        .split(/(?<=[!?])\s+|(?<=\.)\s+(?=[A-ZÇĞİÖŞÜ])/u)
+        .split(/(?<=[.!?])\s+/u)
         .flatMap(sentence => wrapText(sentence, maxLineLength))
         .join('\n');
 }
@@ -70,7 +70,7 @@ function activate(context) {
 
         const maxLineLength = vscode.workspace
             .getConfiguration('singleLineBlock.expand')
-            .get('maxLineLength', 80);
+            .get('maxLineLength', 40);
         const expanded = expandText(editor.document.getText(selection), maxLineLength);
 
         await editor.edit(editBuilder => {

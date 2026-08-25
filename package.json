@@ -3,7 +3,7 @@
   "displayName": "Single Line Block",
   "description": "Format a selected block into one line or multiple logical lines",
   "publisher": "OktayAydoan",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "keywords": [
     "format",
@@ -47,6 +47,12 @@
         "key": "ctrl+shift+j",
         "mac": "cmd+shift+j",
         "when": "editorTextFocus && editorHasSelection"
+      },
+      {
+        "command": "single-line-block.expand",
+        "key": "ctrl+shift+alt+j",
+        "mac": "cmd+shift+alt+j",
+        "when": "editorTextFocus && editorHasSelection"
       }
     ],
     "menus": {
@@ -68,7 +74,7 @@
       "properties": {
         "singleLineBlock.expand.maxLineLength": {
           "type": "number",
-          "default": 80,
+          "default": 40,
           "minimum": 20,
           "description": "Maximum number of characters in an expanded line."
         }

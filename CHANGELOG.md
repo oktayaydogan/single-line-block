@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.3] - 2026-08-25
+
+### Updated
+
+- Expansion now wraps regular single-line selections at 40 characters by default.
+- Sentence splitting works when the next sentence starts with a lowercase letter.
+- Added a keyboard shortcut for **Expand to Multiple Lines**.
+
 ## [0.0.2] - 2026-08-25
 
 ### New Features
