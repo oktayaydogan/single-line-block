@@ -1,13 +1,14 @@
 {
   "name": "single-line-block",
   "displayName": "Single Line Block",
-  "description": "Collapse selected block into a single line, replacing line breaks with spaces",
+  "description": "Format a selected block into one line or multiple logical lines",
   "publisher": "OktayAydoan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "keywords": [
     "format",
     "collapse",
+    "expand",
     "single-line",
     "selection"
   ],
@@ -34,6 +35,10 @@
       {
         "command": "single-line-block.collapse",
         "title": "Collapse to Single Line"
+      },
+      {
+        "command": "single-line-block.expand",
+        "title": "Expand to Multiple Lines"
       }
     ],
     "keybindings": [
@@ -50,8 +55,24 @@
           "command": "single-line-block.collapse",
           "when": "editorTextFocus && editorHasSelection",
           "group": "1_modification"
+        },
+        {
+          "command": "single-line-block.expand",
+          "when": "editorTextFocus && editorHasSelection",
+          "group": "1_modification@2"
         }
       ]
+    },
+    "configuration": {
+      "title": "Single Line Block",
+      "properties": {
+        "singleLineBlock.expand.maxLineLength": {
+          "type": "number",
+          "default": 80,
+          "minimum": 20,
+          "description": "Maximum number of characters in an expanded line."
+        }
+      }
     }
   },
   "devDependencies": {

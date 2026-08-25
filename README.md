@@ -1,8 +1,6 @@
 # Single Line Block
 
-Collapse a selected multi-line block into one line in Visual Studio Code.
-
-The extension trims each selected line, removes blank lines, and joins the remaining lines with a single space.
+Format a selected text block into one line or multiple logical lines in Visual Studio Code.
 
 ## Usage
 
@@ -26,6 +24,26 @@ becomes:
 
 ```text
 first line second line
+```
+
+### Expand to Multiple Lines
+
+Select a line of text and run **Expand to Multiple Lines** from the editor context menu or the Command Palette.
+
+The command starts a new line after sentence-ending punctuation (`.`, `!`, and `?`). Long sentences are wrapped at word boundaries instead of splitting words. The default maximum line length is 80 characters and can be changed with the `singleLineBlock.expand.maxLineLength` setting.
+
+For example:
+
+```text
+First sentence. Second sentence! This sentence is still part of the same paragraph.
+```
+
+becomes:
+
+```text
+First sentence.
+Second sentence!
+This sentence is still part of the same paragraph.
 ```
 
 ## License
